@@ -26,15 +26,17 @@ namespace Utilities
             List<string> lstParameters = GetProcedureParameters(schema, name);
 
             List<SqlParameter> parametersToRemove = new();
-
-            foreach (SqlParameter param in parameters)
+            if (!name.Trim().Equals("GetByAll", StringComparison.OrdinalIgnoreCase))
             {
-                if (!lstParameters.Contains(param.ParameterName))
-                    parametersToRemove.Add(param);
-            }
+                foreach (SqlParameter param in parameters)
+                {
+                    if (!lstParameters.Contains(param.ParameterName))
+                        parametersToRemove.Add(param);
+                }
 
-            foreach (var param in parametersToRemove)
-                parameters.Remove(param);
+                foreach (var param in parametersToRemove)
+                    parameters.Remove(param);
+            }
         }
 
         private List<string> GetProcedureParameters(string schema, string name)

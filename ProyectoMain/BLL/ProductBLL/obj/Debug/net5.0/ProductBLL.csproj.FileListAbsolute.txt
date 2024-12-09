@@ -12,6 +12,7 @@ C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\ProductBLL
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\ProductBLL\obj\Debug\net5.0\ProductBLL.AssemblyInfoInputs.cache
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\ProductBLL\obj\Debug\net5.0\ProductBLL.AssemblyInfo.cs
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\ProductBLL\obj\Debug\net5.0\ProductBLL.csproj.CoreCompileInputs.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\ProductBLL\obj\Debug\net5.0\ProductBLL.sourcelink.json
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\ProductBLL\obj\Debug\net5.0\ProductBLL.csproj.Up2Date
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\ProductBLL\obj\Debug\net5.0\ProductBLL.dll
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\ProductBLL\obj\Debug\net5.0\refint\ProductBLL.dll

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SiticCommerce")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d71efee5d6c29dc9d9f6d961aba59e69c2f0872c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SiticCommerce")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SiticCommerce")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

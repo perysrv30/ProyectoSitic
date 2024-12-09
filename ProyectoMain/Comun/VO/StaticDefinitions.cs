@@ -98,6 +98,6 @@ namespace VO
         /// <summary>
         /// Procedimiento para obtener todos los registros
         /// </summary>
-        public static readonly string GetAll = "GetAll";
+        public static readonly string GetAll = "GetByAll";
     }
 }

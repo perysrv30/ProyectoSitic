@@ -19,8 +19,8 @@ namespace DAO
         static string dateBase = "SiticCommerce";
         //static string connectionString = string.Format("server={0}; database={1}; integrated security = true", server, dateBase);
         //Si tienen controlado la parte del login
-        static string user = "sa";
-        static string password = "Marryto30.";
+        static string user = "usr_aas";
+        static string password = "pwd_aas";
         static string connectionString = string.Format("server={0}; database={1}; user id={2}; password={3};", server, dateBase, user, password);
 
         public DAOClass()
@@ -69,7 +69,6 @@ namespace DAO
                 sqlCmd.CommandType = CommandType.StoredProcedure;
 
                 sqlCmd.Transaction = _transaction;
-
                 new Utilities.ParameterSanitizer(this).CleanParameterCollection(ref parameters, procedureName);
 
                 if (parameters != null)
@@ -78,7 +77,6 @@ namespace DAO
                         sqlCmd.Parameters.Add(param.ParameterName, param.SqlDbType);
                         sqlCmd.Parameters[sqlCmd.Parameters.Count - 1].Value = param.Value;
                     }
-
                 using (SqlDataAdapter sqlDataAdapter = new(sqlCmd))
                     sqlDataAdapter.Fill(dt);
             }
@@ -93,15 +91,13 @@ namespace DAO
                 sqlCmd.CommandType = CommandType.StoredProcedure;
 
                 sqlCmd.Transaction = _transaction;
+                    new Utilities.ParameterSanitizer(this).CleanParameterCollection(ref parameters, procedureName);
 
-                new Utilities.ParameterSanitizer(this).CleanParameterCollection(ref parameters, procedureName);
-
-                foreach (SqlParameter param in parameters)
-                {
-                    sqlCmd.Parameters.Add(param.ParameterName, param.SqlDbType);
-                    sqlCmd.Parameters[sqlCmd.Parameters.Count - 1].Value = param.Value;
-                }
-
+                    foreach (SqlParameter param in parameters)
+                    {
+                        sqlCmd.Parameters.Add(param.ParameterName, param.SqlDbType);
+                        sqlCmd.Parameters[sqlCmd.Parameters.Count - 1].Value = param.Value;
+                    }
                 rows = sqlCmd.ExecuteNonQuery();
             }
             return rows;
@@ -117,18 +113,16 @@ namespace DAO
                 sqlCmd.CommandType = CommandType.StoredProcedure;
 
                 sqlCmd.Transaction = _transaction;
+                    new Utilities.ParameterSanitizer(this).CleanParameterCollection(ref parameters, procedureName);
 
-                new Utilities.ParameterSanitizer(this).CleanParameterCollection(ref parameters, procedureName);
-
-                foreach (SqlParameter param in parameters)
-                {
-                    sqlCmd.Parameters.Add(param.ParameterName, param.SqlDbType);
-                    sqlCmd.Parameters[sqlCmd.Parameters.Count - 1].Value = param.Value;
-                    sqlCmd.Parameters[sqlCmd.Parameters.Count - 1].Direction = param.Direction;
-                    if (param.Direction == ParameterDirection.Output || param.Direction == ParameterDirection.ReturnValue)
-                        nameOutput = param.ParameterName;
-                }
-
+                    foreach (SqlParameter param in parameters)
+                    {
+                        sqlCmd.Parameters.Add(param.ParameterName, param.SqlDbType);
+                        sqlCmd.Parameters[sqlCmd.Parameters.Count - 1].Value = param.Value;
+                        sqlCmd.Parameters[sqlCmd.Parameters.Count - 1].Direction = param.Direction;
+                        if (param.Direction == ParameterDirection.Output || param.Direction == ParameterDirection.ReturnValue)
+                            nameOutput = param.ParameterName;
+                    }
                 rows = sqlCmd.ExecuteNonQuery();
 
                 Identity = Int32.Parse(sqlCmd.Parameters[nameOutput].Value.ToString());

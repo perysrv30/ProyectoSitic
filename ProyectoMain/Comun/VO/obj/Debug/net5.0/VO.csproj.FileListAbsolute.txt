@@ -5,6 +5,7 @@ C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Comun\VO\obj\D
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Comun\VO\obj\Debug\net5.0\VO.AssemblyInfoInputs.cache
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Comun\VO\obj\Debug\net5.0\VO.AssemblyInfo.cs
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Comun\VO\obj\Debug\net5.0\VO.csproj.CoreCompileInputs.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Comun\VO\obj\Debug\net5.0\VO.sourcelink.json
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Comun\VO\obj\Debug\net5.0\VO.dll
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Comun\VO\obj\Debug\net5.0\refint\VO.dll
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Comun\VO\obj\Debug\net5.0\VO.pdb
