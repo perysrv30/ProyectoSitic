@@ -1,0 +1,13 @@
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\ComunAPI.deps.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\ComunAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\ComunAPI.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ComunAPI.csproj.AssemblyReference.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ComunAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ComunAPI.AssemblyInfoInputs.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ComunAPI.AssemblyInfo.cs
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ComunAPI.csproj.CoreCompileInputs.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ComunAPI.sourcelink.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ComunAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\refint\ComunAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ComunAPI.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\ComunAPI\obj\Debug\net5.0\ref\ComunAPI.dll

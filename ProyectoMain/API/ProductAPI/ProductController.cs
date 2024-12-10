@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using VO;
 using BLL;
 using System.Runtime.InteropServices;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace Services
 {

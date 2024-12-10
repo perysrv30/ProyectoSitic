@@ -26,7 +26,7 @@ namespace Utilities
             List<string> lstParameters = GetProcedureParameters(schema, name);
 
             List<SqlParameter> parametersToRemove = new();
-            if (!name.Trim().Equals("GetByAll", StringComparison.OrdinalIgnoreCase))
+            if (!name.Trim().Equals("GetAll", StringComparison.OrdinalIgnoreCase))
             {
                 foreach (SqlParameter param in parameters)
                 {

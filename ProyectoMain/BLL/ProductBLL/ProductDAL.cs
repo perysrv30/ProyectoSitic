@@ -43,10 +43,10 @@ namespace DAL
         internal bool Insert(Product product)
         {
             SqlParameterCollection parameters = Utilities.CommonUtils.AddParametersFromObject<Product>(product);
-            parameters["@Id"].Direction = ParameterDirection.Output;
-
-            return (_dao.ExecuteProcedureWithIdentity($"{Schema.Products}.{Procedures.Insert}", parameters) > 0) ?
-                Dao.Identity > 0 : false;
+            //parameters["@Id"].Direction = ParameterDirection.Output;
+            return _dao.ExecuteProcedure($"{Schema.Products}.{Procedures.Insert}", parameters) > 0;
+            //return (_dao.ExecuteProcedureWithIdentity($"{Schema.Products}.{Procedures.Insert}", parameters) > 0) ?
+            //    Dao.Identity > 0 : false;
         }
 
         internal bool Update(Product product)

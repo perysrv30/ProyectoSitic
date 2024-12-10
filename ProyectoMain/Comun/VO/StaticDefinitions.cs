@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VO
+﻿namespace VO
 {
     public enum eStockStatus
     {
@@ -98,6 +92,6 @@ namespace VO
         /// <summary>
         /// Procedimiento para obtener todos los registros
         /// </summary>
-        public static readonly string GetAll = "GetByAll";
+        public static readonly string GetAll = "GetAll";
     }
 }
