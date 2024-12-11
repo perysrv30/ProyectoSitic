@@ -8,6 +8,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { StockStatusModule } from 'src/app/shared/pipes/stock-status/stock-status/stock-status.module';
 
 
+
+
 @NgModule({
   declarations: [
     ProductCardComponent,
@@ -19,7 +21,7 @@ import { StockStatusModule } from 'src/app/shared/pipes/stock-status/stock-statu
     MatIconModule,
     MatDividerModule,
     //PIPES
-    StockStatusModule
+    StockStatusModule,
   ],
   exports: [
     ProductCardComponent,

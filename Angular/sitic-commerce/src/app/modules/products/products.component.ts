@@ -26,6 +26,7 @@ export class ProductsComponent implements OnInit {
   productList: Product[] = [];
   dataSource = new MatTableDataSource<Product>(this.productList);
   loading: boolean = false;
+  productSearch: Product[]=[];
 
   constructor(private dialog: MatDialog,
       private productsService: ProductsService) { }
@@ -33,6 +34,12 @@ export class ProductsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.dataSource = new MatTableDataSource(); 
     await this.getAllProducts();
+  }
+
+  applySearch(event: Event): void{
+    const inputElement = event.target as HTMLInputElement; 
+    const query = inputElement.value.trim().toLowerCase(); 
+    this.dataSource.filter = query;
   }
 
   async getAllProducts() {
@@ -51,7 +58,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
- async onClickDelete(item: Product) {
+  async onClickDelete(item: Product) {
     console.log(item.id);
     const dialogRef = this.dialog.open(ProductConfirmComponent, {
       width: '400px',
@@ -61,15 +68,14 @@ export class ProductsComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        // Lógica para eliminar el producto
-        console.log(`Producto eliminado: ${item.id}`);
-        this.getAllProducts();
-      } else {
-        console.log('Eliminación cancelada');
-      }
-    });
+    const result = await dialogRef.afterClosed().toPromise(); 
+    if (result) {
+      await this.deleteProduct(item.id);
+      console.log(`Producto eliminado: ${item.id}`);
+      await this.getAllProducts();
+    } else {
+      console.log('Eliminación cancelada');
+    }
   }
 
   onClickReadMore(item: Product){
@@ -101,6 +107,22 @@ export class ProductsComponent implements OnInit {
 
     return await lastValueFrom(dialogProduct.afterClosed()).then(result => {
       return Promise.resolve(result);
+    });
+  }
+
+  async deleteProduct(id: number) {
+    this.loading = true;
+    await this.productsService.deleteProduct(id).then((resp: ProductsResponse) => {
+      this.loading = false;
+      if (resp.error && resp.error.errorType !== eErrorType.None) {
+        console.error(resp.error);
+        return;
+      }
+  
+      this.dataSource.data = resp.products;
+  
+    }).catch((err) => {
+      console.error(err);
     });
   }
 }

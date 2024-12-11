@@ -13,6 +13,8 @@ namespace VO
         [DataMember(EmitDefaultValue = false)]
         public int Id { get; set; }
         [DataMember(EmitDefaultValue = false)]
+        public double TotalPrice { get; set; }
+        [DataMember(EmitDefaultValue = false)]
         public DateTime CreatedAt { get; set; }
         [DataMember(EmitDefaultValue = false)]
         public DateTime UpdatedAt { get; set; }

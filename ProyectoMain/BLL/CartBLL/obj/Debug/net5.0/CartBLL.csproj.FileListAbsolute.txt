@@ -1,0 +1,14 @@
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartBLL.deps.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartBLL.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartBLL.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.csproj.AssemblyReference.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.AssemblyInfoInputs.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.AssemblyInfo.cs
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.csproj.CoreCompileInputs.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.sourcelink.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.csproj.Up2Date
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\refint\CartBLL.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\CartBLL.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\obj\Debug\net5.0\ref\CartBLL.dll

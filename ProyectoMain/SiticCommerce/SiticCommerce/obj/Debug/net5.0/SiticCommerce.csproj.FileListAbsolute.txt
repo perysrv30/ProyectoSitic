@@ -48,3 +48,11 @@ C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\obj\Debug\net5.0\SiticCommerce.pdb
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\obj\Debug\net5.0\SiticCommerce.genruntimeconfig.cache
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\obj\Debug\net5.0\ref\SiticCommerce.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\bin\Debug\net5.0\CartAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\bin\Debug\net5.0\CartBLL.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\bin\Debug\net5.0\CartAPI.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\bin\Debug\net5.0\CartBLL.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\bin\Debug\net5.0\CartItemAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\bin\Debug\net5.0\CartItemBLL.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\bin\Debug\net5.0\CartItemAPI.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\SiticCommerce\SiticCommerce\bin\Debug\net5.0\CartItemBLL.pdb

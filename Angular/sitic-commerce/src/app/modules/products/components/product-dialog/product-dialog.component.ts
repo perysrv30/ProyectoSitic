@@ -127,6 +127,13 @@ export class ProductDialogComponent implements OnInit {
         form.get('minStock')?.setErrors(null);
       }
 
+      if (currentStock === null || currentStock === '') {
+        form.get('currentStock')?.setErrors({ ...form.get('currentStock')?.errors, required: true });
+      }
+  
+      if (minStock === null || minStock === '') {
+        form.get('minStock')?.setErrors({ ...form.get('minStock')?.errors, required: true });
+      }
       return null; 
     };
   }

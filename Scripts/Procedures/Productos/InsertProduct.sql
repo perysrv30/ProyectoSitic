@@ -8,17 +8,17 @@ CREATE PROCEDURE [Products].[Insert]
 	@Name			VARCHAR(255),
 	@Description	TEXT,
 	@Price			DECIMAL(18,2), 
-	@Current_Stock	INT,
-	@Max_Stock		INT, 
-	@Min_Stock		INT, 
-	@Image_Path		VARCHAR(255)
+	@CurrentStock	INT,
+	@MaxStock		INT, 
+	@MinStock		INT, 
+	@Imagepath		VARCHAR(255)
 WITH  ENCRYPTION  
 AS 
 BEGIN	
 	INSERT INTO Products (Name, Description, Price, Current_Stock,
 	Max_Stock, Min_Stock, Image_Path)
-	VALUES (@Name, @Description, @Price, @Current_Stock,
-	@Max_Stock, @Min_Stock, @Image_Path)
+	VALUES (@Name, @Description, @Price, @CurrentStock,
+	@MaxStock, @MinStock, @ImagePath)
 END
 GO
 EXEC sp_recompile N'[Products].[Insert]';

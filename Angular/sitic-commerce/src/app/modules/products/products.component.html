@@ -5,7 +5,8 @@
         
         <div class="bg-foreground rounded-lg px-4 mx-4 max-w-[200px] border border-neutral-800 flex flex-row items-center">
             <mat-icon svgIcon="mat:search" class="icon-base"></mat-icon>
-            <input class="px-4 py-3 border-0 outline-none w-full bg-transparent" placeholder="Buscar..." type="search">
+            <input class="px-4 py-3 border-0 outline-none w-full bg-transparent" placeholder="Buscar..." type="search" 
+            (input)="applySearch($event)">
         </div>
 
         <div class="flex-grow"></div>

@@ -13,10 +13,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { SharedService } from './shared/services/shared.service';
+import { MatMenuModule } from '@angular/material/menu';
+import { StoreModule } from './modules/store/store.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { SharedService } from './shared/services/shared.service';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [
     { provide: SharedService }

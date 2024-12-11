@@ -10,6 +10,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="CartAPI">
+      <HintPath>..\..\Ensamblados\Debug\net5.0\CartAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="CartItemAPI">
+      <HintPath>..\..\Ensamblados\Debug\net5.0\CartItemAPI.dll</HintPath>
+    </Reference>
     <Reference Include="ProductAPI">
       <HintPath>..\..\Ensamblados\Debug\net5.0\ProductAPI.dll</HintPath>
     </Reference>

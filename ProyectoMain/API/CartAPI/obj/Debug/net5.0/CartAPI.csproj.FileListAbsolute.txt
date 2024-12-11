@@ -1,0 +1,14 @@
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.csproj.AssemblyReference.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.AssemblyInfoInputs.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.AssemblyInfo.cs
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.csproj.CoreCompileInputs.cache
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.sourcelink.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartAPI.deps.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartAPI.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.csproj.Up2Date
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\refint\CartAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\CartAPI.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartAPI\obj\Debug\net5.0\ref\CartAPI.dll

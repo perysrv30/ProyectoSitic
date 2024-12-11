@@ -1,10 +1,10 @@
 -- Author:		Esperanza Romero
 -- Description:	Obtiene una lista de Productos
 -- Fecha:		09/11/2024
-IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[Products].[GetByAll]') AND type in (N'P', N'PC'))
-	DROP PROCEDURE [Products].[GetByAll]
+IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[Products].[GetAll]') AND type in (N'P', N'PC'))
+	DROP PROCEDURE [Products].[GetAll]
 GO
-CREATE PROCEDURE [Products].[GetByAll]
+CREATE PROCEDURE [Products].[GetAll]
 WITH  ENCRYPTION  
 AS 
 BEGIN	
@@ -22,5 +22,5 @@ BEGIN
 	FROM Products
 END
 GO
-EXEC sp_recompile N'[Products].[GetByAll]';
+EXEC sp_recompile N'[Products].[GetAll]';
 GO

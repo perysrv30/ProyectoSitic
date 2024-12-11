@@ -26,9 +26,15 @@
         <mat-icon svgIcon="mat:menu" class="icon-base" inline="true"></mat-icon>
       </button>
       <span class="flex-1 basis-auto"></span>
-      <button mat-icon-button>
+      <button mat-icon-button  [matMenuTriggerFor]="cartMenu">
         <mat-icon svgIcon="mat:shopping_cart" class="icon-base" inline="true"></mat-icon>
       </button>
+
+      <mat-menu #cartMenu="matMenu" class="cart-menu">
+        <!-- Contenido del carrito -->
+        <!-- <app-cart-add></app-cart-add> -->
+      </mat-menu>
+
     </mat-toolbar>
 
     <!-- Área de contenido -->
