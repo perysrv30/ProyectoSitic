@@ -93,5 +93,10 @@
         /// Procedimiento para obtener todos los registros
         /// </summary>
         public static readonly string GetAll = "GetAll";
+
+        /// <summary>
+        /// Procedimiento para obtener items 
+        /// </summary>
+        public static readonly string GetByIdObj = "GetByIdObj";
     }
 }

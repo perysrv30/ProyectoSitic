@@ -1,3 +1,9 @@
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\bin\Debug\net5.0\CartBLL.deps.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\bin\Debug\net5.0\CartBLL.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\bin\Debug\net5.0\CartBLL.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\bin\Debug\net5.0\DAO.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\bin\Debug\net5.0\Helpers.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\BLL\CartBLL\bin\Debug\net5.0\VO.pdb
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartBLL.deps.json
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartBLL.dll
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartBLL.pdb

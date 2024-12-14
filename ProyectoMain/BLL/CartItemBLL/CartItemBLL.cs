@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using VO;
 using DAL;
+using VO;
 
 namespace BLL
 {
@@ -22,6 +21,7 @@ namespace BLL
         #endregion
 
         #region Methods
+
         public bool ExecuteDBAction(eDbAction action, CartItem cartItem)
         {
             bool ok;
@@ -64,6 +64,18 @@ namespace BLL
                 return _dal.Update(cartItem);
             });
         }
+
+        public CartItem GetByIdCart(int id)
+        {
+            CartItem cartItem = null;
+            using (DataTable dt = _dal.GetByIdCart(id))
+            {
+                if (dt?.Rows?.Count > 0)
+                    cartItem = Utilities.CommonUtils.ConvertToObject<CartItem>(dt.Rows[0]);
+            }
+            return cartItem;
+        }
+
 
         #endregion
     }

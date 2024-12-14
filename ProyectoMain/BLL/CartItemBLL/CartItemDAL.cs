@@ -25,6 +25,15 @@ namespace DAL
         #endregion
 
         #region Methods
+        internal DataTable GetByIdCart(int id)
+        {
+            using (SqlCommand sqlCommand = new())
+            {
+                SqlParameterCollection parameters = sqlCommand.Parameters;
+                parameters.Add("@IdCart", SqlDbType.Int).Value = id;
+                return _dao.QueryInformation($"{Schema.Products}.{Procedures.GetById}", parameters);
+            }
+        }
         internal bool Insert(CartItem cartItem)
         {
             SqlParameterCollection parameters = Utilities.CommonUtils.AddParametersFromObject<CartItem>(cartItem);
