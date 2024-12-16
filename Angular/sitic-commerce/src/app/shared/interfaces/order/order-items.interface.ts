@@ -1,6 +1,6 @@
-export interface CartItems {
+export interface OrderItems {
     id: number;
-    cartId: number;
+    OrderId: number;
     productId: number;
     quantity: number;
     price: number;

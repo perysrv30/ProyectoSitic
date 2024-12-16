@@ -7,7 +7,7 @@ using BLL;
 
 namespace OrderAPI
 {
-    [Route("Order/[action]")]
+    [Route("OrderItems/[action]")]
     [ApiController]
     public class OrderController : ControllerBase
     {
