@@ -1,9 +1,13 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
+import { ProductsService } from 'src/app/shared/services/products.service';
+
 // Interfaces
 import { Product } from 'src/app/shared/interfaces/products/product.interface';
+import { ProductsResponse } from 'src/app/shared/interfaces/products/products-response.interface';
 import { Cart } from 'src/app/shared/interfaces/cart/cart.interface';
 import { CartItems } from 'src/app/shared/interfaces/cart/cart-items.interface';
+import { eErrorType, eScreenStatus } from 'src/app/shared/interfaces/comun/enums.interface';
 @Component({
   selector: 'product-card',
   templateUrl: './product-card.component.html',
@@ -13,10 +17,14 @@ export class ProductCardComponent implements OnInit {
   days = null; 
   created = null;
   cartItems: CartItems[]=[];
+  loading: boolean = false;
 
   @Input() product!: Product;
   @Output() addToCart: EventEmitter<any> = new EventEmitter();
-  constructor() { }
+
+  products: Product[] = [];
+
+  constructor( private productsService: ProductsService) { }
   ngOnInit(): void {
     console.log(this.product);
     this.productNew();
@@ -39,36 +47,27 @@ export class ProductCardComponent implements OnInit {
 
 
   onAddToCart() {
+    this.loading = true;
     this.addToCart.emit(this.product);  //emitir del padre 
+    this.loading = false;
   }
   
-  // addCart(product) {
-  //   const storedCart = sessionStorage.getItem('cart');
-  //   this.cartItems = storedCart ? JSON.parse(storedCart) : [];
 
-  //   si ya existe
-  //   const existingProduct = this.cartItems.find(item => item.Id === product.id);
-
-
-  //   if (existingProduct) {
-  //     Incrementar la cantidad si ya existe
-  //     existingProduct.Quantity++;
-  //   } else {
-  //     Agregar un nuevo producto al carrito
-  //     this.cartItems.push({
-  //       ProductId: product.id,
-  //       Price: product.price,
-  //       Quantity: 1,
-  //       Id: 0,
-  //       createdAt: new(Date),
-  //       updatedAt: null,
-  //       CartId: 0
-  //     });
-  //   }
-
-  //   sessionStorage.setItem('cart Items', JSON.stringify(this.cartItems));
-  //   console.log(`${product.name} se agregó al carrito.`);
-  // }
+  async getAllProducts() {
+      this.loading = true;
+      await this.productsService.getAllProducts().then((resp: ProductsResponse) => {
+        this.loading = false;
+        if (resp.error && resp.error.errorType !== eErrorType.None) {
+          console.error(resp.error);
+          return;
+        }
   
+        this.products = resp.products;  // Aquí actualizas el arreglo de productos
+        console.log(this.products);
+      }).catch((err) => {
+        this.loading = false;
+        console.error(err);
+      });
+    }
 
 }

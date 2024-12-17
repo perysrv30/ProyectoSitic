@@ -1,9 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { OrderResponse } from "../interfaces/order/order-response.interface"; 
-import { OrderItemsResponse } from "../interfaces/order/order-items.response.interface";
-import { Order } from "../interfaces/order/order.interface";
-import { OrderItems } from "../interfaces/order/order-items.interface";
+import { ProductsResponse } from "../interfaces/products/products-response.interface";
+import { Product } from "../interfaces/products/product.interface";
 import { lastValueFrom } from "rxjs/internal/lastValueFrom";
 
 // CONFIGURACION
@@ -14,66 +12,37 @@ import { environment } from '../../../environments/environment';
 })
 export class ProductsService {
 
-    private _actionUrlsOrder: string;
-    private _actionUrlsOrderItems: string;
+    private _actionUrls: string;
     constructor(public http: HttpClient) {
-        this._actionUrlsOrder = `${environment.URI_SERVER}/Order`;
-        this._actionUrlsOrderItems = `${environment.URI_SERVER}/OrderItems`;
+        this._actionUrls = `${environment.URI_SERVER}/Product`;
     }
 
-    async getByIdOrder(id: number): Promise<OrderResponse> {
-        const response = await lastValueFrom(this.http.get(`${this._actionUrlsOrder}/GetById`,
+    async getById(id: number): Promise<ProductsResponse> {
+        const response = await lastValueFrom(this.http.get(`${this._actionUrls}/GetById`,
           { params: { id } }));
-          return response as OrderResponse;
+          return response as ProductsResponse;
     }
 
-    async getAllProductsOrder(): Promise<OrderResponse> {
-        const response = await lastValueFrom(this.http.get(`${this._actionUrlsOrder}/GetAll`, { }));
-          return response as OrderResponse;
+    async getAllProducts(): Promise<ProductsResponse> {
+        const response = await lastValueFrom(this.http.get(`${this._actionUrls}/GetAll`, { }));
+          return response as ProductsResponse;
     }
 
-    async addProductOrder(order: Order): Promise<OrderResponse> {
-        const response = await lastValueFrom(this.http.post(`${this._actionUrlsOrder}/Insert`, { order }));
-          return response as OrderResponse;
+    async addProduct(product: Product): Promise<ProductsResponse> {
+        const response = await lastValueFrom(this.http.post(`${this._actionUrls}/Insert`, { product }));
+          return response as ProductsResponse;
     }
 
-    async updateProductOrder(order: Order): Promise<OrderResponse> {
-        const response = await lastValueFrom(this.http.put(`${this._actionUrlsOrder}/Update`,
-          { order }));
-          return response as OrderResponse;
+    async updateProduct(product: Product): Promise<ProductsResponse> {
+        const response = await lastValueFrom(this.http.put(`${this._actionUrls}/Update`,
+          { product }));
+          return response as ProductsResponse;
     }
 
-    async deleteProductOrder(id: number): Promise<OrderResponse> {
-        const response = await lastValueFrom(this.http.delete(`${this._actionUrlsOrder}/Delete`,
+    async deleteProduct(id: number): Promise<ProductsResponse> {
+        const response = await lastValueFrom(this.http.delete(`${this._actionUrls}/Delete`,
           { params: { id } }));
-          return response as OrderResponse;
+          return response as ProductsResponse;
     }
-    // ORDER ITEMS
-    async getByIdOrderItems(id: number): Promise<OrderItemsResponse> {
-        const response = await lastValueFrom(this.http.get(`${this._actionUrlsOrderItems}/GetById`,
-          { params: { id } }));
-          return response as OrderItemsResponse;
-    }
-
-    async getAllProductsOrderItems(): Promise<OrderItemsResponse> {
-        const response = await lastValueFrom(this.http.get(`${this._actionUrlsOrderItems}/GetAll`, { }));
-          return response as OrderItemsResponse;
-    }
-
-    async addProductOrderItems(orderItems: OrderItems): Promise<OrderItemsResponse> {
-        const response = await lastValueFrom(this.http.post(`${this._actionUrlsOrder}/Insert`, { orderItems }));
-          return response as OrderItemsResponse;
-    }
-
-    async updateProductOrderItems(orderItems: OrderItems): Promise<OrderItemsResponse> {
-        const response = await lastValueFrom(this.http.put(`${this._actionUrlsOrderItems}/Update`,
-          { orderItems }));
-          return response as OrderItemsResponse;
-    }
-
-    async deleteProductOrderItems(id: number): Promise<OrderItemsResponse> {
-        const response = await lastValueFrom(this.http.delete(`${this._actionUrlsOrderItems}/Delete`,
-          { params: { id } }));
-          return response as OrderItemsResponse;
-    }
+    
 }

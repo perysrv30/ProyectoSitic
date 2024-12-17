@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using DAL;
 using VO;
@@ -21,6 +22,11 @@ namespace BLL
         #endregion
 
         #region Methods
+        public List<CartItem> GetAll()
+        {
+            using (DataTable dt = _dal.GetAll())
+                return Utilities.CommonUtils.ConvertDataTableToList<CartItem>(dt);
+        }
 
         public bool ExecuteDBAction(eDbAction action, CartItem cartItem)
         {

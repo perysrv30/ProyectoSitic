@@ -29,6 +29,24 @@ namespace CarItemAPI
 
         #region Endpoints
         [HttpGet]
+        public ActionResult<CartItemResponse> GetAll()
+        {
+            CartItemResponse response = new();
+
+            try
+            {
+                response.CartItems = new BLL.CartItemBLL(Dao).GetAll();
+            }
+            catch (Exception ex)
+            {
+                response.Error = Utilities.ErrorHandler.Handler(ex);
+                _logger.LogError($"Error en CartItemController {nameof(GetAll)}: ${ex.Message}");
+            }
+
+            return response;
+        }
+
+        [HttpGet]
         public ActionResult<CartItemResponse> GetByIdCart(int id)
         {
             CartItemResponse response = new();

@@ -15,10 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { SharedService } from './shared/services/shared.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { StoreModule } from './modules/store/store.module';
+import { CartAddComponent } from './modules/store/cart-add/cart-add.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatDivider, MatDividerModule } from '@angular/material/divider';
+import { MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CartAddComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,13 @@ import { StoreModule } from './modules/store/store.module';
     MatIconModule,
     MatListModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule, 
+    BrowserModule,
+    MatTableModule,
+    MatIconModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatRippleModule
   ],
   providers: [
     { provide: SharedService }

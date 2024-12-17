@@ -43,5 +43,10 @@ export class CartsService {
           return response as CartItemResponse;
     }
 
+    async getAllCartItems(): Promise<CartItemResponse> {
+            const response = await lastValueFrom(this.http.get(`${this._actionUrlsCartItem}/GetAll`, { }));
+              return response as CartItemResponse;
+    }
+
 
 }
