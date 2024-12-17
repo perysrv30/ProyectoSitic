@@ -22,7 +22,7 @@ export class AppComponent {
     },
     {
       path: '/orders',
-      icon: 'mat:shopping_bag',
+      icon: 'mat:list',
       title: 'Mis compras'
     },
     {
