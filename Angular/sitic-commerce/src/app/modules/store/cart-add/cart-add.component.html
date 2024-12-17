@@ -1,45 +1,44 @@
-<!-- <div *ngIf="cartItemsDetail.length > 0; else emptyCart">
-    <h3>Productos en el carrito</h3>
-    <ul>
-      <li *ngFor="let item of cartItemsDetail">
-        Producto  {{ item.name }} - Cantidad: {{ item.quantity}} - Precio: {{ item.price | currency }}
-      </li>
-    </ul>
+  <div *ngFor="let item of cartItemsDetail" class="flex items-center p-4 border-b border-gray-300">
+    <!-- Imagen del producto -->
+    <div class="w-24 h-24 mr-4 flex-shrink-0">
+      <img [src]="item.imagePath" alt="{{item.name}}" class="w-full h-full object-cover rounded-md">
+    </div>
+  
+    <!-- Información del producto -->
+    <div class="flex-grow">
+      <h3 class="text-lg font-semibold mb-1">{{ item.name }}</h3>
+      <div class="flex items-center space-x-4">
+        <!-- Cantidad -->
+        <div class="flex items-center">
+          <span class="text-sm text-gray-600">Cantidad:</span>
+          <span class="ml-2 font-semibold">{{ item.quantity }}</span>
+        </div>
+  
+        <!-- Botón Eliminar -->
+        <button mat-icon-button color="warn">
+          <mat-icon  color="warn" svgIcon="mat:delete" class="icon-base" inline="true"></mat-icon>
+        </button>
+      </div>
+    </div>
+  
+    <!-- Precio -->
+    <div class="text-right">
+      <span class="text-lg font-bold">{{ item.price * item.quantity| currency }}</span>
+    </div>
+  </div>
+
+  <div class="flex justify-end items-center p-4">
+    <span class="text-lg font-semibold mr-4">Total:</span>
+    <span class="text-2xl font-bold">{{ totalPrice | currency }}</span>
   </div>
   
-  <ng-template #emptyCart>
-    <p>No hay productos en el carrito.</p>
-  </ng-template> -->
-
-  <table mat-table [dataSource]="cartItemsDetail" class="mat-elevation-z8 w-full">
-
-    <!-- Definición de la columna 'name' -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef class="text-sm"> Nombre </th>
-      <td mat-cell *matCellDef="let item" class="text-sm">{{ item.name }}</td>
-    </ng-container>
-  
-    <!-- Definición de la columna 'price' -->
-    <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef class="text-sm"> Precio </th>
-      <td mat-cell *matCellDef="let item" class="text-sm text-right">{{ item.price | currency }}</td>
-    </ng-container>
-  
-    <!-- Definición de la columna 'quantity' -->
-    <ng-container matColumnDef="quantity">
-      <th mat-header-cell *matHeaderCellDef class="text-sm"> Cantidad </th>
-      <td mat-cell *matCellDef="let item" class="text-sm text-center">{{ item.quantity }}</td>
-    </ng-container>
-  
-    <!-- Filas de la tabla -->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
+  <!-- Botón Confirmar Carrito -->
   <div class="mt-4 text-center">
-    <button mat-raised-button color="primary" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-all" >
+    <button mat-raised-button color="primary" class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-all" 
+    (click)="ConfirmOrder()">
       Confirmar Carrito
     </button>
   </div>
-  <!-- confirmCart()  (click)=""-->
-  
+
+  <!-- (click)="removeItem(item)"
+   -->

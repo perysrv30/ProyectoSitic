@@ -5,7 +5,6 @@ import { ProductsService } from 'src/app/shared/services/products.service';
 // Interfaces
 import { Product } from 'src/app/shared/interfaces/products/product.interface';
 import { ProductsResponse } from 'src/app/shared/interfaces/products/products-response.interface';
-import { Cart } from 'src/app/shared/interfaces/cart/cart.interface';
 import { CartItems } from 'src/app/shared/interfaces/cart/cart-items.interface';
 import { eErrorType, eScreenStatus } from 'src/app/shared/interfaces/comun/enums.interface';
 @Component({
@@ -21,6 +20,7 @@ export class ProductCardComponent implements OnInit {
 
   @Input() product!: Product;
   @Output() addToCart: EventEmitter<any> = new EventEmitter();
+  @Output() productAdded = new EventEmitter<void>(); 
 
   products: Product[] = [];
 
