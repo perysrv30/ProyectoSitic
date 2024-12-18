@@ -4,11 +4,3 @@ C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAP
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAPI\obj\Debug\net5.0\CartItemAPI.AssemblyInfo.cs
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAPI\obj\Debug\net5.0\CartItemAPI.csproj.CoreCompileInputs.cache
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAPI\obj\Debug\net5.0\CartItemAPI.sourcelink.json
-C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartItemAPI.deps.json
-C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartItemAPI.dll
-C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\CartItemAPI.pdb
-C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAPI\obj\Debug\net5.0\CartItem.1BF456EB.Up2Date
-C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAPI\obj\Debug\net5.0\CartItemAPI.dll
-C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAPI\obj\Debug\net5.0\refint\CartItemAPI.dll
-C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAPI\obj\Debug\net5.0\CartItemAPI.pdb
-C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\CartItemAPI\obj\Debug\net5.0\ref\CartItemAPI.dll

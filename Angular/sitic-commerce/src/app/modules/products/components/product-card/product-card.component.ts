@@ -26,11 +26,7 @@ export class ProductCardComponent implements OnInit {
 
   constructor( private productsService: ProductsService) { }
   ngOnInit(): void {
-    console.log(this.product);
     this.productNew();
- 
-    console.log('days ' + this.days);
-    console.log('created ' + this.created);
   }
 
   // Funcion para despues de dos días quitar el new
@@ -62,8 +58,7 @@ export class ProductCardComponent implements OnInit {
           return;
         }
   
-        this.products = resp.products;  // Aquí actualizas el arreglo de productos
-        console.log(this.products);
+        this.products = resp.products;
       }).catch((err) => {
         this.loading = false;
         console.error(err);

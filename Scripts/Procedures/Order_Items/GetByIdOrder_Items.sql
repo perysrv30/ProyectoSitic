@@ -1,5 +1,5 @@
 -- Author:		Esperanza Romero
--- Description:	Obtiene una lista de Productos
+-- Description:	Obtiene una lista de order items
 -- Fecha:		09/11/2024
 IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[Order_Items].[GetById]') AND type in (N'P', N'PC'))
 	DROP PROCEDURE [Order_Items].[GetById]

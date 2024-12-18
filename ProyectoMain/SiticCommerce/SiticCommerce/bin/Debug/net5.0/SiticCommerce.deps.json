@@ -35,11 +35,7 @@
         "dependencies": {
           "Swashbuckle.AspNetCore": "5.6.3",
           "System.Data.SqlClient": "4.8.6",
-          "CartAPI": "1.0.0.0",
-          "CartItemAPI": "1.0.0.0",
           "OrderAPI": "1.0.0.0",
-          "OrderItemAPI": "1.0.0.0",
-          "ProductAPI": "1.0.0.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -468,28 +464,6 @@
         }
       },
       "System.Security.Principal.Windows/4.7.0": {},
-      "CartAPI/1.0.0.0": {
-        "runtime": {
-          "CartAPI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "CartAPI.dll": {}
-        }
-      },
-      "CartItemAPI/1.0.0.0": {
-        "runtime": {
-          "CartItemAPI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "CartItemAPI.dll": {}
-        }
-      },
       "OrderAPI/1.0.0.0": {
         "runtime": {
           "OrderAPI.dll": {
@@ -499,28 +473,6 @@
         },
         "compile": {
           "OrderAPI.dll": {}
-        }
-      },
-      "OrderItemAPI/1.0.0.0": {
-        "runtime": {
-          "OrderItemAPI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "OrderItemAPI.dll": {}
-        }
-      },
-      "ProductAPI/1.0.0.0": {
-        "runtime": {
-          "ProductAPI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "ProductAPI.dll": {}
         }
       },
       "DAO/1.0.0.0": {
@@ -539,49 +491,9 @@
           }
         }
       },
-      "CartBLL/1.0.0.0": {
-        "runtime": {
-          "CartBLL.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "Helpers/1.0.0.0": {
-        "runtime": {
-          "Helpers.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "CartItemBLL/1.0.0.0": {
-        "runtime": {
-          "CartItemBLL.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "OrderBLL/1.0.0.0": {
         "runtime": {
           "OrderBLL.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "OrderItemBLL/1.0.0.0": {
-        "runtime": {
-          "OrderItemBLL.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "ProductBLL/1.0.0.0": {
-        "runtime": {
-          "ProductBLL.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -2398,27 +2310,7 @@
       "path": "system.security.principal.windows/4.7.0",
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
-    "CartAPI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CartItemAPI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "OrderAPI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "OrderItemAPI/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ProductAPI/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2433,32 +2325,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "CartBLL/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "Helpers/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CartItemBLL/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
     "OrderBLL/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "OrderItemBLL/1.0.0.0": {
-      "type": "reference",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "ProductBLL/1.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

@@ -1,10 +1,10 @@
 -- Author:		Esperanza Romero
--- Description:	Obtiene una lista de Productos
+-- Description:	Obtiene una lista de orden item
 -- Fecha:		09/11/2024
-IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[Order_Items].[GetByAll]') AND type in (N'P', N'PC'))
-	DROP PROCEDURE [Order_Items].[GetByAll]
+IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[Order_Items].[GetAll]') AND type in (N'P', N'PC'))
+	DROP PROCEDURE [Order_Items].[GetAll]
 GO
-CREATE PROCEDURE [Order_Items].[GetByAll]
+CREATE PROCEDURE [Order_Items].[GetAll]
 WITH  ENCRYPTION  
 AS 
 BEGIN	
@@ -18,5 +18,5 @@ BEGIN
 	FROM Order_Items
 END
 GO
-EXEC sp_recompile N'[Order_Items].[GetByAll]';
+EXEC sp_recompile N'[Order_Items].[GetAll]';
 GO
