@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { CartItemResponse } from 'src/app/shared/interfaces/cart/cart-items-response.interface';
 import { CartItemDetails, CartItems } from 'src/app/shared/interfaces/cart/cart-items.interface';
 import { ChangeDetectorRef } from '@angular/core';
@@ -16,6 +16,7 @@ import { Order } from 'src/app/shared/interfaces/order/order.interface';
 import { OrderItems } from 'src/app/shared/interfaces/order/order-items.interface';
 import { OrderResponse } from 'src/app/shared/interfaces/order/order-response.interface';
 import { OrderItemsResponse } from 'src/app/shared/interfaces/order/order-items.response.interface';
+import { EventEmitter } from 'stream';
 
 
 @Component({
@@ -24,7 +25,6 @@ import { OrderItemsResponse } from 'src/app/shared/interfaces/order/order-items.
   styleUrls: ['./cart-add.component.scss']
 })
 export class CartAddComponent implements OnInit {
-
   cartItemsDetail: CartItemDetails[] = [];
   selectedItem: CartItemDetails[] | null = null;
   product: Product;
@@ -66,7 +66,7 @@ export class CartAddComponent implements OnInit {
           name: product.name,
           price: product.price,
           quantity: item.quantity,
-          imagePath: product.imagePath,
+          imagePath: product.imagePath || 'https://via.placeholder.com/150',
           Total: carts.totalPrice
         };
       } else {
@@ -147,13 +147,6 @@ export class CartAddComponent implements OnInit {
 
   async ConfirmOrder(): Promise<void> {
 
-    // una vez confirmada la orden que se resete el cartId
-    // console.log('ítem:', this.cartItemsDetail);
-    // if (this.cartItemsDetail) {
-    //   console.log('Orden confirmada para el ítem:', this.cartItemsDetail);
-    // } else {
-    //   console.log('No se seleccionó ningún ítem');
-    // }
     if (!this.cartItemsDetail || this.cartItemsDetail.length === 0) {
       console.log('No se seleccionó ningún ítem');
       return;
@@ -164,28 +157,29 @@ export class CartAddComponent implements OnInit {
       const newOrder: Order = {
         id: 0,
         totalPrice: this.cartItemsDetail[0].Total || 0,
-        status: 'active',
+        status: 'act',
         createdAt: new Date(),
         updatedAt: new Date(),
       };
       const orderRes = await this.addOrder(newOrder);
-
-      const orderId = orderRes.createdAt;
-      console.log('Orden creada con ID:', orderId);
+      const getOrdes = await this.getAllOrders();
+      const maxOrderId = getOrdes.length > 0 ? Math.max(...getOrdes.map(item => item.id)) : null;
+      console.log('Máximo ID:', maxOrderId);
+      
       // se crea nuevos order items
-      // for (const item of this.cartItemsDetail) {
-      //   const orderItem: OrderItems = {
-      //     id: 0,
-      //     OrderId: orderId,
-      //     productId: item.productId,
-      //     quantity: item.quantity,
-      //     price: item.price,
-      //     createdAt: new Date(),
-      //     updatedAt: new Date(),
-      //   };
-      //   const orderItemRes = await this.orderService.addOrderItems(orderItem);
-      //   console.log('Ítem agregado a la orden:', orderItemRes);
-      // }
+
+      for (const item of this.cartItemsDetail) {
+        const orderItem: OrderItems = {
+          id: 0,
+          orderId: maxOrderId,
+          productId: item.productId,
+          quantity: item.quantity,
+          price: item.price,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        };
+        const orderItemRes = await this.orderService.addOrderItems(orderItem);
+      }
 
     } catch (error) {
       console.error('Error al confirmar la orden:', error);
@@ -216,8 +210,23 @@ export class CartAddComponent implements OnInit {
       }
       return resp.orderItem;
     } catch (err) {
-      console.error('Error al agregar la orden:', err);
+      console.error('Error al agregar la orden Item:', err);
       throw err;
+    }
+  }
+
+  async getAllOrders(): Promise<Order []> {
+    try {
+      const resp: OrderResponse = await this.orderService.getAllOrder();
+      if (resp.error && resp.error.errorType !== eErrorType.None) {
+        console.error(resp.error);
+        return [];
+      }
+
+      return resp.orders;
+    } catch (err) {
+      console.error(err);
+      return [];
     }
   }
 

@@ -1,11 +1,17 @@
 <mat-sidenav-container class="h-screen">
   <!-- Barra lateral -->
-  <mat-sidenav #sidenav mode="side" class="bg-neutral-900 w-72 p-4">
-    <mat-toolbar class="title bg-neutral-900 text-neutral-100">
-      {{ clientName }}
+  <mat-sidenav #sidenav mode="side" class="bg-gray-900 w-72 p-4">
+    <!-- <mat-toolbar class="title bg-gray-900 text-neutral-100">
+      <img src="assets/img/logo.png" alt="Logo" class="h-10 mr-4">
+       {{ clientName }}
+    </mat-toolbar> -->
+
+    <mat-toolbar class="title bg-gray-900 text-neutral-100 flex justify-center items-center">
+      <img src="assets/img/logo.png" alt="Logo" class="h-32 mr-4">
     </mat-toolbar>
 
-    <mat-divider class="bg-neutral-600"></mat-divider>
+
+    <mat-divider class="bg-neutral-600 mt-8" ></mat-divider>
 
     <div class="flex flex-col space-y-2 py-4">
       <a *ngFor="let route of routes" 
@@ -26,13 +32,13 @@
         <mat-icon svgIcon="mat:menu" class="icon-base" inline="true"></mat-icon>
       </button>
       <span class="flex-1 basis-auto"></span>
-      <button mat-icon-button  [matMenuTriggerFor]="cartMenu">
+      <button mat-icon-button  [matMenuTriggerFor]="cartMenu" (click)="cartAdd.loadCart()">
         <mat-icon svgIcon="mat:shopping_cart" class="icon-base" inline="true"></mat-icon>
       </button>
 
       <mat-menu #cartMenu="matMenu" class="cart-menu">
         <!-- Contenido del carrito -->
-        <app-cart-add></app-cart-add>
+        <app-cart-add #cartAdd></app-cart-add>
       </mat-menu>
 
     </mat-toolbar>

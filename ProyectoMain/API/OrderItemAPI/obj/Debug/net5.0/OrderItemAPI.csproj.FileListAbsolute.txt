@@ -4,3 +4,11 @@ C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemA
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemAPI\obj\Debug\net5.0\OrderItemAPI.AssemblyInfo.cs
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemAPI\obj\Debug\net5.0\OrderItemAPI.csproj.CoreCompileInputs.cache
 C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemAPI\obj\Debug\net5.0\OrderItemAPI.sourcelink.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\OrderItemAPI.deps.json
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\OrderItemAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\Ensamblados\Debug\net5.0\OrderItemAPI.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemAPI\obj\Debug\net5.0\OrderIte.D43BB231.Up2Date
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemAPI\obj\Debug\net5.0\OrderItemAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemAPI\obj\Debug\net5.0\refint\OrderItemAPI.dll
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemAPI\obj\Debug\net5.0\OrderItemAPI.pdb
+C:\Users\esper\Documents\ProyectoSitic\ProyectoSitic\ProyectoMain\API\OrderItemAPI\obj\Debug\net5.0\ref\OrderItemAPI.dll

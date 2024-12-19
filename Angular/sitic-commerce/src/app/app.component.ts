@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild  } from '@angular/core';
 import { MatIconRegistry, SafeResourceUrlWithIconOptions } from '@angular/material/icon';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { CartAddComponent } from './modules/store/cart-add/cart-add.component';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  clientName = 'SITICommerce'
+  @ViewChild('cartAdd') cartAdd: CartAddComponent;
+  clientName = 'SiticCommerce'
   routes = [
     {
       path: '/store',

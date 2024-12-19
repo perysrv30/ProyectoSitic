@@ -5,3 +5,13 @@ export interface Order {
     createdAt: Date;
     updatedAt?: Date;
 }
+export interface DisplayedOrder {
+    date: Date;
+    total: number;
+    products: {
+      name: string;
+      quantity: number;
+      price: number;
+      imgPath: string;
+    }[];
+  }

@@ -18,7 +18,7 @@ export class OrderService {
     private _actionUrlsOrderItems: string;
     constructor(public http: HttpClient) {
         this._actionUrlsOrder = `${environment.URI_SERVER}/Order`;
-        this._actionUrlsOrderItems = `${environment.URI_SERVER}/OrderItems`;
+        this._actionUrlsOrderItems = `${environment.URI_SERVER}/OrderItem`;
     }
 
     async getByIdOrder(id: number): Promise<OrderResponse> {
@@ -60,8 +60,8 @@ export class OrderService {
           return response as OrderItemsResponse;
     }
 
-    async addOrderItems(orderItems: OrderItems): Promise<OrderItemsResponse> {
-        const response = await lastValueFrom(this.http.post(`${this._actionUrlsOrder}/Insert`, { orderItems }));
+    async addOrderItems(orderItem: OrderItems): Promise<OrderItemsResponse> {
+        const response = await lastValueFrom(this.http.post(`${this._actionUrlsOrderItems}/Insert`, { orderItem }));
           return response as OrderItemsResponse;
     }
 
