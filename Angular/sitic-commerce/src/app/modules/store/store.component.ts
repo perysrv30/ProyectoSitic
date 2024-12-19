@@ -54,7 +54,7 @@ export class StoreComponent implements OnInit {
   }
 
    async addToCart(product: Product) {
-    let cartId = localStorage.getItem('cartId') || '4' 
+    let cartId = localStorage.getItem('cartId'); // || '4' 
     console.log(`CartId: ${cartId}`);
     try {
        if (cartId) {
@@ -65,15 +65,15 @@ export class StoreComponent implements OnInit {
         // Crear un nuevo carrito - /Cart/Insert
         const newCart: Cart = {
           id: 0, 
-          totalPrice: 100, 
+          totalPrice: 0, 
           createdAt: new Date(),
           updatedAt: new Date()
         };
         const newCartResp = await this.addCart(newCart);
 
         cartId = newCartResp.id.toString();
-
-        this.sharedService.getItemLocalStorage(cartId)
+        // traer el ultimo get all y maximo 
+        localStorage.setItem('cartId', cartId); 
         console.log(' se crea nuevo carrito');
       }
       console.log('busquda de  items');

@@ -33,6 +33,11 @@ namespace BLL
             }
             return cart;
         }
+        public List<Cart> GetAll()
+        {
+            using (DataTable dt = _dal.GetAll())
+                return Utilities.CommonUtils.ConvertDataTableToList<Cart>(dt);
+        }
 
         public bool ExecuteDBAction(eDbAction action, Cart cart)
         {

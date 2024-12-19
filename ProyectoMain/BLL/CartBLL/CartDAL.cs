@@ -25,6 +25,20 @@ namespace DAL
         #endregion
 
         #region Methods
+
+        internal DataTable GetAll()
+        {
+            return _dao.QueryInformation($"{Schema.Carts}.{Procedures.GetAll}");
+        }
+        internal DataTable GetByIdCart(int id)
+        {
+            using (SqlCommand sqlCommand = new())
+            {
+                SqlParameterCollection parameters = sqlCommand.Parameters;
+                parameters.Add("@IdCart", SqlDbType.Int).Value = id;
+                return _dao.QueryInformation($"{Schema.CartItems}.{Procedures.GetById}", parameters);
+            }
+        }
         internal DataTable GetById(int id)
         {
             using (SqlCommand sqlCommand = new())

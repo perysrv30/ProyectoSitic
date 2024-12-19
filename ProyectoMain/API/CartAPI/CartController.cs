@@ -28,6 +28,24 @@ namespace Services
 
         #region Endpoints
         [HttpGet]
+        public ActionResult<CartResponse> GetAll()
+        {
+            CartResponse response = new();
+
+            try
+            {
+                response.Carts = new BLL.CartBLL(Dao).GetAll();
+            }
+            catch (Exception ex)
+            {
+                response.Error = Utilities.ErrorHandler.Handler(ex);
+                _logger.LogError($"Error en CartItemController {nameof(GetAll)}: ${ex.Message}");
+            }
+
+            return response;
+        }
+
+        [HttpGet]
         public ActionResult<CartResponse> GetById(int id)
         {
             CartResponse response = new();
