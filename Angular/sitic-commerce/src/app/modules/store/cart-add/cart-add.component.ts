@@ -16,7 +16,8 @@ import { Order } from 'src/app/shared/interfaces/order/order.interface';
 import { OrderItems } from 'src/app/shared/interfaces/order/order-items.interface';
 import { OrderResponse } from 'src/app/shared/interfaces/order/order-response.interface';
 import { OrderItemsResponse } from 'src/app/shared/interfaces/order/order-items.response.interface';
-import { EventEmitter } from 'stream';
+import { SharedService } from 'src/app/shared/services/shared.service'; 
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -36,7 +37,9 @@ export class CartAddComponent implements OnInit {
   displayedColumns: string[] = ['name', 'price', 'quantity'];
   constructor(private cartService: CartsService,
     private productsService: ProductsService,
-    private orderService: OrderService
+    private orderService: OrderService, 
+    private sharedService: SharedService, 
+    private snackbar: MatSnackBar,
   ) { }
 
 
@@ -47,46 +50,51 @@ export class CartAddComponent implements OnInit {
 
   async loadCart() {
     //this.updateCart();
-    const allCartsItems = await this.getAllCartItems();
-    const cartId = '4';
-    const cartItems = allCartsItems.filter(item => item.cartId === parseInt(cartId)) //cartid
-    const carts = await this.getByIdCart(parseInt(cartId));
+    let cartId = localStorage.getItem('cartId');
+    if (cartId != null) {
+      console.log('local id:' + cartId);
+      const allCartsItems = await this.getAllCartItems();
+      //const cartId = '4';
+      const cartItems = allCartsItems.filter(item => item.cartId === parseInt(cartId)) //cartid
+      const carts = await this.getByIdCart(parseInt(cartId));
 
-    if (carts && carts.totalPrice !== null && carts.totalPrice !== undefined) {
-      this.totalPrice = carts.totalPrice;
-    } else {
-      this.totalPrice = 0;
-    }
-    const detailedCartItems = await Promise.all(cartItems.map(async (item) => {
-      const product = await this.getById(item.productId);
-      if (product) {
-        return {
-          id: item.id,
-          productId: item.productId,
-          name: product.name,
-          price: product.price,
-          quantity: item.quantity,
-          imagePath: product.imagePath || 'https://via.placeholder.com/150',
-          Total: carts.totalPrice
-        };
+      if (carts && carts.totalPrice !== null && carts.totalPrice !== undefined) {
+        this.totalPrice = carts.totalPrice;
       } else {
-
-        return {
-          id: item.id,
-          productId: item.productId,
-          name: 'Producto no disponible',
-          price: 0,
-          quantity: item.quantity,
-          imagePath: null,
-          Total: 0
-        };
+        this.totalPrice = 0;
       }
-    }));
+      const detailedCartItems = await Promise.all(cartItems.map(async (item) => {
+        const product = await this.getById(item.productId);
+        if (product) {
+          return {
+            id: item.id,
+            productId: item.productId,
+            name: product.name,
+            price: product.price,
+            quantity: item.quantity,
+            imagePath: product.imagePath || 'https://via.placeholder.com/150',
+            Total: carts.totalPrice
+          };
+        } else {
 
-    this.cartItemsDetail = detailedCartItems;
+          return {
+            id: item.id,
+            productId: item.productId,
+            name: 'Producto no disponible',
+            price: 0,
+            quantity: item.quantity,
+            imagePath: null,
+            Total: 0
+          };
+        }
 
-    //this.cartItems = cartItems;
-    console.log('Productos en el carrito:', this.cartItemsDetail);
+      }));
+
+      this.cartItemsDetail = detailedCartItems;
+
+      //this.cartItems = cartItems;
+      console.log('Productos en el carrito:', this.cartItemsDetail);
+    }
   }
   updateCart() {
     this.loadCart();
@@ -165,7 +173,7 @@ export class CartAddComponent implements OnInit {
       const getOrdes = await this.getAllOrders();
       const maxOrderId = getOrdes.length > 0 ? Math.max(...getOrdes.map(item => item.id)) : null;
       console.log('Máximo ID:', maxOrderId);
-      
+
       // se crea nuevos order items
 
       for (const item of this.cartItemsDetail) {
@@ -180,6 +188,15 @@ export class CartAddComponent implements OnInit {
         };
         const orderItemRes = await this.orderService.addOrderItems(orderItem);
       }
+
+      // Limpiar el carrito en la UI
+      this.cartItemsDetail = [];
+      this.totalPrice = 0;
+
+      // Eliminar el carrito del localStorage
+      localStorage.removeItem('cartId');
+      console.log('Carrito limpiado exitosamente');
+      this.sharedService.showSnackBar(this.snackbar, 'La orden se ha generado correctamente.');
 
     } catch (error) {
       console.error('Error al confirmar la orden:', error);
@@ -215,7 +232,7 @@ export class CartAddComponent implements OnInit {
     }
   }
 
-  async getAllOrders(): Promise<Order []> {
+  async getAllOrders(): Promise<Order[]> {
     try {
       const resp: OrderResponse = await this.orderService.getAllOrder();
       if (resp.error && resp.error.errorType !== eErrorType.None) {

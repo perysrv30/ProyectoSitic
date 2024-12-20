@@ -19,18 +19,18 @@ import { CartAddComponent } from './modules/store/cart-add/cart-add.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { MatRippleModule } from '@angular/material/core';
+import { CartAddModule } from './modules/store/cart-add/cart-add.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CartAddComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-
+    CartAddModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,

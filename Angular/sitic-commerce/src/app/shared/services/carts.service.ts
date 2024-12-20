@@ -31,7 +31,11 @@ export class CartsService {
         const response = await lastValueFrom(this.http.post(`${this._actionUrlsCart}/Insert`, { cart }));
           return response as CartResponse;
     }
-
+    async getAllCart(): Promise<CartResponse> {
+      const response = await lastValueFrom(this.http.get(`${this._actionUrlsCart}/GetAll`, { }));
+        return response as CartResponse;
+}
+    // cartItems
     async addCartItem(cartItem: CartItems): Promise<CartItemResponse> {
         const response = await lastValueFrom(this.http.post(`${this._actionUrlsCartItem}/Insert`, { cartItem }));
           return response as CartItemResponse;

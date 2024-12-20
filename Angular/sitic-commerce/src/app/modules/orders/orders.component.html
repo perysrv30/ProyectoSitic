@@ -20,16 +20,16 @@
       
       <div class="flex justify-between items-center mb-4">
         <span class="text-sm text-gray-600">Fecha: {{ order.date | date: 'mediumDate' }}</span>
-        <span class="text-lg font-semibold text-gray-800">Total: ${{ order.total | number: '1.2-2' }}</span>
+        <span class="text-lg font-semibold text-green-500">Total: ${{ order.total | number: '1.2-2' }}</span>
       </div>
     
       <div *ngFor="let product of order.products" class="flex items-center gap-4 border-b py-3">
         <img [src]="product.imgPath" alt="{{ product.name }}" class="h-16 w-16 rounded-lg object-cover">
         <div class="flex-1">
           <h3 class="text-base font-medium text-gray-800">{{ product.name }}</h3>
-          <p class="text-sm text-gray-500">Cantidad: {{ product.quantity }}</p>
+          <p class="text-sm text-yellow-500">Cantidad: {{ product.quantity }}</p>
         </div>
-        <span class="text-base font-medium text-gray-800">${{ product.price | number: '1.2-2' }}</span>
+        <span class="text-base font-medium text-cyan-500">${{ product.price | number: '1.2-2' }}</span>
       </div>
 
     </div>

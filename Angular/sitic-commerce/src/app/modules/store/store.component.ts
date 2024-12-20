@@ -54,24 +54,24 @@ export class StoreComponent implements OnInit {
   }
 
    async addToCart(product: Product) {
-    let cartId = localStorage.getItem('cartId'); // || '4' 
+    let cartId = localStorage.getItem('cartId'); 
     console.log(`CartId: ${cartId}`);
     try {
        if (cartId) {
-        // Recuperar carrito existente - /Cart/GetById
         await this.getByIdCart(parseInt(cartId));
         console.log('Carrito existente');
       } else {
-        // Crear un nuevo carrito - /Cart/Insert
         const newCart: Cart = {
           id: 0, 
           totalPrice: 0, 
           createdAt: new Date(),
           updatedAt: new Date()
         };
-        const newCartResp = await this.addCart(newCart);
-
-        cartId = newCartResp.id.toString();
+        await this.addCart(newCart);
+        const getCarts = await this.getAllCart();
+        const newCartMax = getCarts.length > 0 ? Math.max(...getCarts.map(item => item.id)) : null;
+        console.log('Máximo ID:', newCartMax);
+        cartId = newCartMax.toString();
         // traer el ultimo get all y maximo 
         localStorage.setItem('cartId', cartId); 
         console.log(' se crea nuevo carrito');
@@ -187,7 +187,6 @@ export class StoreComponent implements OnInit {
         return;
       }
       console.log('se actualizo carrito Items')
-      //this.dialogRef.close({ refreshProducts: true, product: this.product });
   
     }).catch((err) => {
       console.error(err);
@@ -216,4 +215,19 @@ export class StoreComponent implements OnInit {
   sendIdLocal(id: string){
     return this.sharedService.getItemLocalStorage(id);
   }
+
+  async getAllCart(): Promise<Cart []> {
+      try {
+        const resp: CartResponse = await this.cartService.getAllCart();
+        if (resp.error && resp.error.errorType !== eErrorType.None) {
+          console.error(resp.error);
+          return [];
+        }
+  
+        return resp.carts;
+      } catch (err) {
+        console.error(err);
+        return [];
+      }
+    }
 }
