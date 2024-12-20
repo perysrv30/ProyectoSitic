@@ -1,6 +1,6 @@
 <div  class="rounded-md bg-neutral-50 shadow-md">
   <div class="p-2 text-center relative" matRipple>
-    <img *ngIf="false; else noImage" data-base64="true" [src]="product.imagePath" class="h-24 w-24 mx-auto rounded-lg">
+    <img *ngIf="product.imagepath; else noImage" data-base64="true" [src]="product.imagepath" class="h-24 w-24 mx-auto rounded-lg">
     
     <ng-template #noImage> 
     <div class="h-24 w-24 mx-auto leading-none flex items-center justify-center">

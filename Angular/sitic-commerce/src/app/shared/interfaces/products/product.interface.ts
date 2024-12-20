@@ -7,7 +7,7 @@ export interface Product {
     maxStock: number;
     minStock: number;
     stockStatusId: number;
-    imagePath?: string;
+    imagepath?: string;
     createdAt: Date;
     updatedAt?: Date;
 }

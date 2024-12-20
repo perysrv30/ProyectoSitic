@@ -68,7 +68,7 @@ export class CartAddComponent implements OnInit {
             name: product.name,
             price: product.price,
             quantity: item.quantity,
-            imagePath: product.imagePath || 'https://via.placeholder.com/150',
+            imagePath: product.imagepath || 'https://via.placeholder.com/150',
             Total: carts.totalPrice
           };
         } else {

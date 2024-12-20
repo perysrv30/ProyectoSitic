@@ -52,7 +52,7 @@ export class OrdersComponent implements OnInit {
                     name: product.name,
                     quantity: item.quantity,
                     price: item.price,
-                    imgPath: product.imagePath || 'https://via.placeholder.com/150',
+                    imgPath: product.imagepath || 'https://via.placeholder.com/150',
                   };
                 })
               ),

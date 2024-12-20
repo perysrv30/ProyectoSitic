@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
+import { UploadService } from 'src/app/shared/services/upload.service';
 
 import { eErrorType, eScreenStatus } from 'src/app/shared/interfaces/comun/enums.interface';
 import { Product } from 'src/app/shared/interfaces/products/product.interface';
@@ -17,13 +18,17 @@ import { ProductsResponse } from 'src/app/shared/interfaces/products/products-re
 })
 export class ProductDialogComponent implements OnInit {
 
+
+  selectedFile: File | null = null;
+  imageUrl: string | null = null;
+
   id: number;
   product: Product;
   eScreenStatus: eScreenStatus;
   formProduct: FormGroup;
   loading: boolean = false;
   imagePreview: string | ArrayBuffer | null = null;
-
+  currentScreenStatus: eScreenStatus = eScreenStatus.Adding; 
   title: string = '';
   icon: string = 'mat:edit'
 
@@ -32,7 +37,8 @@ export class ProductDialogComponent implements OnInit {
     public sharedService: SharedService,
     private productsService: ProductsService,
     private snackbar: MatSnackBar,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private uploadService: UploadService) {
     this.id = this.data.id;
     this.eScreenStatus = this.data.eScreenStatus;
   }
@@ -59,10 +65,10 @@ export class ProductDialogComponent implements OnInit {
         { value: '', disabled: disableFields },
         [Validators.required, Validators.min(1)]
       ],
-      
+
     }, {
-      validators:[
-        this.validateStockLimits() 
+      validators: [
+        this.validateStockLimits()
       ]
     });
 
@@ -93,14 +99,16 @@ export class ProductDialogComponent implements OnInit {
         minStock: 0,
         maxStock: 0,
         stockStatusId: 0,
-        imagePath: '',
+        imagepath: '',
         updatedAt: new Date(),
         createdAt: new Date()
       }
     }
   }
-
-  validateStockLimits(){
+  isAddingScreen(): boolean {
+    return this.eScreenStatus === eScreenStatus.Adding;
+  }
+  validateStockLimits() {
     return (form: FormGroup) => {
       const currentStock = form.get('currentStock')?.value;
       const maxStock = form.get('maxStock')?.value;
@@ -127,100 +135,133 @@ export class ProductDialogComponent implements OnInit {
       if (currentStock === null || currentStock === '') {
         form.get('currentStock')?.setErrors({ ...form.get('currentStock')?.errors, required: true });
       }
-  
+
       if (minStock === null || minStock === '') {
         form.get('minStock')?.setErrors({ ...form.get('minStock')?.errors, required: true });
       }
-      return null; 
+      return null;
     };
   }
 
   async onSubmit() {
-  if (this.eScreenStatus === eScreenStatus.ViewDetail)
-    this.dialogRef.close({ ok: true, product: this.product });
+    if (this.eScreenStatus === eScreenStatus.ViewDetail)
+      this.dialogRef.close({ ok: true, product: this.product });
 
-  if (!await this.validateAllFields())
-    return;
+    if (!await this.validateAllFields())
+      return;
 
-  if (this.eScreenStatus === eScreenStatus.Adding) {
-    this.addProduct();
-  } else if (this.eScreenStatus === eScreenStatus.Updating) {
-    this.updateProduct();
+    if (this.eScreenStatus === eScreenStatus.Adding) {
+      this.addProduct();
+
+    } else if (this.eScreenStatus === eScreenStatus.Updating) {
+      this.updateProduct();
+    }
   }
-}
 
   async updateProduct() {
-  this.loading = true;
-  this.productsService.updateProduct(this.product).then((resp: ProductsResponse) => {
-    this.loading = false;
-    if (resp.error && resp.error.errorType !== eErrorType.None) {
-      console.error(resp.error);
-      return;
-    }
+    this.loading = true;
+    this.productsService.updateProduct(this.product).then((resp: ProductsResponse) => {
+      this.loading = false;
+      if (resp.error && resp.error.errorType !== eErrorType.None) {
+        console.error(resp.error);
+        return;
+      }
 
-    this.dialogRef.close({ refreshProducts: true, product: this.product });
+      this.dialogRef.close({ refreshProducts: true, product: this.product });
 
-  }).catch((err) => {
-    console.error(err);
-  });
-}
-
-  async addProduct() {
-  this.loading = true;
-  this.productsService.addProduct(this.product).then((resp: ProductsResponse) => {
-    this.loading = false;
-    if (resp.error && resp.error.errorType !== eErrorType.None) {
-      console.error(resp.error);
-      return;
-    }
-
-    this.dialogRef.close({ refreshProducts: true, product: this.product });
-
-  }).catch((err) => {
-    console.error(err);
-  });
-}
-
-  async getById(id: number) {
-  this.loading = true;
-  await this.productsService.getById(id).then((resp: ProductsResponse) => {
-    this.loading = false;
-    if (resp.error && resp.error.errorType !== eErrorType.None) {
-      console.error(resp.error);
-      return;
-    }
-
-    this.product = resp.product;
-
-    this.formProduct.get('name').setValue(this.product.name);
-    this.formProduct.get('description').setValue(this.product.description);
-    this.formProduct.get('price').setValue(this.product.price);
-    this.formProduct.get('currentStock').setValue(this.product.currentStock);
-    this.formProduct.get('maxStock').setValue(this.product.maxStock);
-    this.formProduct.get('minStock').setValue(this.product.minStock);
-  }).catch((err) => {
-    this.loading = false;
-    console.error(err);
-  });
-}
-
-  async validateAllFields(): Promise < boolean > {
-  if(this.formProduct.invalid) {
-  this.sharedService.showSnackBar(this.snackbar, 'Existen campos que aún no han sido llenados correctamente.');
-  this.sharedService.markControlsAsTouched(this.formProduct);
-  return false;
-}
-
-this.product.name = this.formProduct.get('name')?.value;
-this.product.description = this.formProduct.get('description')?.value;
-this.product.price = this.formProduct.get('price')?.value;
-this.product.currentStock = this.formProduct.get('currentStock')?.value;
-this.product.maxStock = this.formProduct.get('maxStock')?.value;
-this.product.minStock = this.formProduct.get('minStock')?.value;
-this.product.imagePath = '1';
-this.product.stockStatusId = 1;
-
-return true;
+    }).catch((err) => {
+      console.error(err);
+    });
   }
 
+  async addProduct() {
+    if (!this.selectedFile) {
+      console.error('Por favor selecciona una imagen antes de agregar el producto.');
+      this.sharedService.showSnackBar(this.snackbar, 'Por favor selecciona una imagen antes de agregar el producto.');
+      return;
+    }
+    this.loading = true;
+    const imageUrl = await this.uploadImage();
+
+    // 2. Asignar la URL al campo imagePath del producto
+    this.product.imagepath = imageUrl;
+
+    this.productsService.addProduct(this.product).then((resp: ProductsResponse) => {
+      this.loading = false;
+      if (resp.error && resp.error.errorType !== eErrorType.None) {
+        console.error(resp.error);
+        return;
+      }
+      this.uploadImage();
+      this.dialogRef.close({ refreshProducts: true, product: this.product });
+
+    }).catch((err) => {
+      console.error(err);
+    });
+  }
+
+  async getById(id: number) {
+    this.loading = true;
+    await this.productsService.getById(id).then((resp: ProductsResponse) => {
+      this.loading = false;
+      if (resp.error && resp.error.errorType !== eErrorType.None) {
+        console.error(resp.error);
+        return;
+      }
+
+      this.product = resp.product;
+
+      this.formProduct.get('name').setValue(this.product.name);
+      this.formProduct.get('description').setValue(this.product.description);
+      this.formProduct.get('price').setValue(this.product.price);
+      this.formProduct.get('currentStock').setValue(this.product.currentStock);
+      this.formProduct.get('maxStock').setValue(this.product.maxStock);
+      this.formProduct.get('minStock').setValue(this.product.minStock);
+    }).catch((err) => {
+      this.loading = false;
+      console.error(err);
+    });
+  }
+
+  async validateAllFields(): Promise<boolean> {
+    if (this.formProduct.invalid) {
+      this.sharedService.showSnackBar(this.snackbar, 'Existen campos que aún no han sido llenados correctamente.');
+      this.sharedService.markControlsAsTouched(this.formProduct);
+      return false;
+    }
+
+    this.product.name = this.formProduct.get('name')?.value;
+    this.product.description = this.formProduct.get('description')?.value;
+    this.product.price = this.formProduct.get('price')?.value;
+    this.product.currentStock = this.formProduct.get('currentStock')?.value;
+    this.product.maxStock = this.formProduct.get('maxStock')?.value;
+    this.product.minStock = this.formProduct.get('minStock')?.value;
+    this.product.imagepath = '';
+    this.product.stockStatusId = 1;
+
+    return true;
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input?.files?.length) {
+      this.selectedFile = input.files[0];
+    }
+  }
+
+  async uploadImage(): Promise<string> {
+    if (!this.selectedFile) {
+      return Promise.reject('No se seleccionó un archivo.');
+    }
+
+    try {
+      // Llamas al servicio para subir la imagen
+      const response: any = await this.uploadService.uploadImage(this.selectedFile).toPromise();  // Pasas directamente el archivo
+
+      return response.secure_url;  // Obtienes la URL segura de la imagen subida
+    } catch (error) {
+      console.error('Error al subir la imagen:', error);
+      return Promise.reject('Error al subir la imagen');
+    }
+  }
 }
