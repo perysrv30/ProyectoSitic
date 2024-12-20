@@ -1,5 +1,5 @@
 -- Author:		Esperanza Romero
--- Description:	Obtiene una lista de Productos
+-- Description:	Obtiene una lista de CartItem
 -- Fecha:		09/11/2024
 IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[Cart_Items].[GetByAll]') AND type in (N'P', N'PC'))
 	DROP PROCEDURE [Cart_Items].[GetByAll]

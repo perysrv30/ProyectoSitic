@@ -1,11 +1,11 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CartItemResponse } from 'src/app/shared/interfaces/cart/cart-items-response.interface';
 import { CartItemDetails, CartItems } from 'src/app/shared/interfaces/cart/cart-items.interface';
-import { ChangeDetectorRef } from '@angular/core';
 
 import { CartsService } from 'src/app/shared/services/carts.service';
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { OrderService } from 'src/app/shared/services/order.services';
+import { SharedService } from 'src/app/shared/services/shared.service'; 
 
 import { eErrorType } from 'src/app/shared/interfaces/comun/enums.interface';
 import { Product } from 'src/app/shared/interfaces/products/product.interface';
@@ -16,7 +16,7 @@ import { Order } from 'src/app/shared/interfaces/order/order.interface';
 import { OrderItems } from 'src/app/shared/interfaces/order/order-items.interface';
 import { OrderResponse } from 'src/app/shared/interfaces/order/order-response.interface';
 import { OrderItemsResponse } from 'src/app/shared/interfaces/order/order-items.response.interface';
-import { SharedService } from 'src/app/shared/services/shared.service'; 
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
@@ -44,18 +44,14 @@ export class CartAddComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('El componente CartAdd se está inicializando');
     this.loadCart();
   }
 
   async loadCart() {
-    //this.updateCart();
     let cartId = localStorage.getItem('cartId');
     if (cartId != null) {
-      console.log('local id:' + cartId);
       const allCartsItems = await this.getAllCartItems();
-      //const cartId = '4';
-      const cartItems = allCartsItems.filter(item => item.cartId === parseInt(cartId)) //cartid
+      const cartItems = allCartsItems.filter(item => item.cartId === parseInt(cartId)) 
       const carts = await this.getByIdCart(parseInt(cartId));
 
       if (carts && carts.totalPrice !== null && carts.totalPrice !== undefined) {
@@ -91,9 +87,6 @@ export class CartAddComponent implements OnInit {
       }));
 
       this.cartItemsDetail = detailedCartItems;
-
-      //this.cartItems = cartItems;
-      console.log('Productos en el carrito:', this.cartItemsDetail);
     }
   }
   updateCart() {
@@ -156,12 +149,10 @@ export class CartAddComponent implements OnInit {
   async ConfirmOrder(): Promise<void> {
 
     if (!this.cartItemsDetail || this.cartItemsDetail.length === 0) {
-      console.log('No se seleccionó ningún ítem');
       return;
     }
 
     try {
-      // se crea nueva orden 
       const newOrder: Order = {
         id: 0,
         totalPrice: this.cartItemsDetail[0].Total || 0,
@@ -172,9 +163,6 @@ export class CartAddComponent implements OnInit {
       const orderRes = await this.addOrder(newOrder);
       const getOrdes = await this.getAllOrders();
       const maxOrderId = getOrdes.length > 0 ? Math.max(...getOrdes.map(item => item.id)) : null;
-      console.log('Máximo ID:', maxOrderId);
-
-      // se crea nuevos order items
 
       for (const item of this.cartItemsDetail) {
         const orderItem: OrderItems = {
@@ -189,13 +177,10 @@ export class CartAddComponent implements OnInit {
         const orderItemRes = await this.orderService.addOrderItems(orderItem);
       }
 
-      // Limpiar el carrito en la UI
       this.cartItemsDetail = [];
       this.totalPrice = 0;
 
-      // Eliminar el carrito del localStorage
       localStorage.removeItem('cartId');
-      console.log('Carrito limpiado exitosamente');
       this.sharedService.showSnackBar(this.snackbar, 'La orden se ha generado correctamente.');
 
     } catch (error) {

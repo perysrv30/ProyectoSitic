@@ -18,8 +18,6 @@ import { Product } from 'src/app/shared/interfaces/products/product.interface';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent implements OnInit {
-  //displayedColumns: string[] = ['actions', 'imgPath', 'name', 'description', 'price', 'currentStock', 'updatedAt', 'tags'];
-
   displayedColumns: DisplayedOrder[] = [];
   loading: boolean = false;
 
@@ -44,10 +42,6 @@ export class OrdersComponent implements OnInit {
             const orderItems = await this.getAllOrderItems();
     
             const relatedItems = orderItems.filter(item => item.orderId === order.id);
-
-            console.log('Datos de OrderItems 1:', orderItems);
-            console.log('Datos de OrderItems 2:', order);
-            
             return {
               date: order.updatedAt,
               total: order.totalPrice,
@@ -67,7 +61,6 @@ export class OrdersComponent implements OnInit {
         );
     
         this.displayedColumns = displayedColumns;
-        console.log('Órdenes activas:', this.displayedColumns);
         this.loading = false;
       } catch (error) {
         console.error('Error al obtener las órdenes activas:', error);
@@ -93,7 +86,6 @@ export class OrdersComponent implements OnInit {
   async getAllOrderItems(): Promise<OrderItems[]> {
     try {
       const resp: OrderItemsResponse = await this.orderService.getAllOrderItems();
-      console.log('Datos de OrderItems:', resp);
       if (resp.error && resp.error.errorType !== eErrorType.None) {
         console.error(resp.error);
         return [];
@@ -135,8 +127,6 @@ export class OrdersComponent implements OnInit {
           product.price.toString().includes(query)
         );
       });
-  
-      console.log('Órdenes filtradas:', this.displayedColumns);
     }
 
 }

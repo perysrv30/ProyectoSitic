@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-// Servicios
 import { ProductsService } from 'src/app/shared/services/products.service';
+import { CartsService } from 'src/app/shared/services/carts.service';
 
-// Interfaces
 import { Product } from 'src/app/shared/interfaces/products/product.interface';
 import { ProductsResponse } from 'src/app/shared/interfaces/products/products-response.interface';
 import { eErrorType } from 'src/app/shared/interfaces/comun/enums.interface';
 import { CartResponse } from 'src/app/shared/interfaces/cart/cart-response.interface';
 import { CartItemResponse } from 'src/app/shared/interfaces/cart/cart-items-response.interface';
-import { CartsService } from 'src/app/shared/services/carts.service';
 import { Cart } from 'src/app/shared/interfaces/cart/cart.interface';
 import { CartItems } from 'src/app/shared/interfaces/cart/cart-items.interface';
-import { SharedService } from 'src/app/shared/services/shared.service';
-import { parse } from 'path';
-@Component({
+import { SharedService } from 'src/app/shared/services/shared.service';@Component({
   selector: 'app-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.scss']
@@ -55,11 +51,9 @@ export class StoreComponent implements OnInit {
 
    async addToCart(product: Product) {
     let cartId = localStorage.getItem('cartId'); 
-    console.log(`CartId: ${cartId}`);
     try {
        if (cartId) {
         await this.getByIdCart(parseInt(cartId));
-        console.log('Carrito existente');
       } else {
         const newCart: Cart = {
           id: 0, 
@@ -70,22 +64,14 @@ export class StoreComponent implements OnInit {
         await this.addCart(newCart);
         const getCarts = await this.getAllCart();
         const newCartMax = getCarts.length > 0 ? Math.max(...getCarts.map(item => item.id)) : null;
-        console.log('Máximo ID:', newCartMax);
         cartId = newCartMax.toString();
-        // traer el ultimo get all y maximo 
         localStorage.setItem('cartId', cartId); 
-        console.log(' se crea nuevo carrito');
       }
-      console.log('busquda de  items');
       const allCartItems = await this.getAllCartItems();
       const cartItems = allCartItems.filter( item => item.cartId === parseInt(cartId)) 
-      // Verificar si el producto ya está en el carrito
-      const existingItem = cartItems.find(item => item.productId === product.id); // aqui mandan llamar su servicio que obtiene los elementos del carrito
+      const existingItem = cartItems.find(item => item.productId === product.id); 
 
       if (existingItem) {
-        // Actualizar cantidad /CartItem/Update
-        // existingItem.quantity++;
-        console.log('Producto existente ');
         const updatedCartItem: CartItems = {
           id: existingItem.id,
           cartId: existingItem.cartId,
@@ -97,12 +83,7 @@ export class StoreComponent implements OnInit {
         };
 
         await this.cartService.updateCartItem(updatedCartItem);
-        console.log('CartItem actualizado');
       } else {
-        // Agregar nuevo producto al carrito - /CartItem/Insert
-
-        console.log('agregando al carrito no exitse el producto');
-
         const newCartItem: CartItems = {
           id: 0,                            
           cartId: parseInt(cartId),
@@ -114,11 +95,9 @@ export class StoreComponent implements OnInit {
         }; 
 
         await this.cartService.addCartItem(newCartItem);
-        console.log('nuevo producto ');
       };
       this.getAllProducts();
     } catch (error) {
-      console.error('Error al agregar producto al carrito: ', error);
     }
     
   }
@@ -149,9 +128,6 @@ export class StoreComponent implements OnInit {
         return;
       }
   
-      //this.dialogRef.close({ refreshProducts: true, product: this.product });
-      console.log('se agrego nuevo carrito item')
-  
     }).catch((err) => {
       console.error(err);
     });
@@ -165,16 +141,14 @@ export class StoreComponent implements OnInit {
   
         if (resp.error && resp.error.errorType !== eErrorType.None) {
           console.error('Error al crear carrito:', resp.error);
-          throw new Error('Error al crear carrito'); // Lanza un error explícito
+          throw new Error('Error al crear carrito'); 
         }
-  
-        console.log('Carrito creado con éxito:', resp.cart);
-        return resp.cart; // Retorna el carrito creado con su ID
+        return resp.cart; 
       })
       .catch((err) => {
         this.loading = false;
         console.error('Error al agregar carrito:', err);
-        throw err; // Propaga el error para manejarlo arriba
+        throw err;
       });
   }
 
@@ -186,7 +160,6 @@ export class StoreComponent implements OnInit {
         console.error(resp.error);
         return;
       }
-      console.log('se actualizo carrito Items')
   
     }).catch((err) => {
       console.error(err);

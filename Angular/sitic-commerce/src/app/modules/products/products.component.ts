@@ -3,13 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
 import { MatTableDataSource } from '@angular/material/table';
 
-// Componentes
 import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 
-// Servicios
 import { ProductsService } from 'src/app/shared/services/products.service';
 
-// Interfaces
 import { eErrorType, eScreenStatus } from 'src/app/shared/interfaces/comun/enums.interface';
 import { ProductsResponse } from 'src/app/shared/interfaces/products/products-response.interface';
 import { Product } from 'src/app/shared/interfaces/products/product.interface';
@@ -59,7 +56,6 @@ export class ProductsComponent implements OnInit {
   }
 
   async onClickDelete(item: Product) {
-    console.log(item.id);
     const dialogRef = this.dialog.open(ProductConfirmComponent, {
       width: '400px',
       data: {
@@ -71,10 +67,8 @@ export class ProductsComponent implements OnInit {
     const result = await dialogRef.afterClosed().toPromise(); 
     if (result) {
       await this.deleteProduct(item.id);
-      console.log(`Producto eliminado: ${item.id}`);
       await this.getAllProducts();
     } else {
-      console.log('Eliminación cancelada');
     }
   }
 

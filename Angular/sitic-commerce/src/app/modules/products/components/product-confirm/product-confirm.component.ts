@@ -13,10 +13,10 @@ export class ProductConfirmComponent {
   ) {}
 
   onConfirm(): void {
-    this.dialogRef.close(true); // Confirmación
+    this.dialogRef.close(true);
   }
 
   onCancel(): void {
-    this.dialogRef.close(false); // Cancelación
+    this.dialogRef.close(false);
   }
 }

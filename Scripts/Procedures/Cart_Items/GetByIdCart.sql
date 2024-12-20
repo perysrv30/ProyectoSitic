@@ -1,5 +1,5 @@
 -- Author:		Esperanza Romero
--- Description:	Obtiene un Producto por un Id
+-- Description:	Obtiene un CartItem por un Idcart
 -- Fecha:		09/11/2024
 IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[Cart_Items].[GetByIdObj]') AND type in (N'P', N'PC'))
 	DROP PROCEDURE [Cart_Items].GetByIdObj
@@ -8,7 +8,7 @@ CREATE PROCEDURE [Cart_Items].GetByIdObj
 	@IdObj			INT
 WITH  ENCRYPTION  
 AS 
-BEGIN	sss
+BEGIN	
 	SELECT	Id				AS 'Id', 
 			Cart_Id			AS 'CartId',  
 			Product_Id		AS 'ProductId',  

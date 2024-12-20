@@ -2,12 +2,12 @@ IF EXISTS (SELECT 1 FROM sys.objects WHERE object_id = OBJECT_ID(N'[Carts].[Inse
 	DROP PROCEDURE [Carts].[Insert]
 GO
 CREATE PROCEDURE [Carts].[Insert]
-	@Total_Price	DECIMAL(18,2)
+	@TotalPrice	DECIMAL(18,2)
 WITH  ENCRYPTION  
 AS 
 BEGIN	
 	INSERT INTO Carts(Total_Price)
-	VALUES (@Total_Price)
+	VALUES (@TotalPrice)
 END
 GO
 EXEC sp_recompile N'[Carts].[Insert]';

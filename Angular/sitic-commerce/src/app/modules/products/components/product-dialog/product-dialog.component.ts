@@ -3,11 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-// Servicios
 import { ProductsService } from 'src/app/shared/services/products.service';
 import { SharedService } from 'src/app/shared/services/shared.service';
 
-// Interfaces
 import { eErrorType, eScreenStatus } from 'src/app/shared/interfaces/comun/enums.interface';
 import { Product } from 'src/app/shared/interfaces/products/product.interface';
 import { ProductsResponse } from 'src/app/shared/interfaces/products/products-response.interface';
@@ -86,7 +84,6 @@ export class ProductDialogComponent implements OnInit {
     if (this.eScreenStatus !== eScreenStatus.Adding) {
       await this.getById(this.id);
     } else {
-      // Inicializa objeto
       this.product = {
         id: 0,
         name: '',
@@ -195,7 +192,6 @@ export class ProductDialogComponent implements OnInit {
 
     this.product = resp.product;
 
-    // Seteamos data a nuestro formulario
     this.formProduct.get('name').setValue(this.product.name);
     this.formProduct.get('description').setValue(this.product.description);
     this.formProduct.get('price').setValue(this.product.price);
@@ -215,7 +211,6 @@ export class ProductDialogComponent implements OnInit {
   return false;
 }
 
-// Seteamos data a nuestro objeto
 this.product.name = this.formProduct.get('name')?.value;
 this.product.description = this.formProduct.get('description')?.value;
 this.product.price = this.formProduct.get('price')?.value;

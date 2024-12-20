@@ -2,7 +2,6 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 
 import { ProductsService } from 'src/app/shared/services/products.service';
 
-// Interfaces
 import { Product } from 'src/app/shared/interfaces/products/product.interface';
 import { ProductsResponse } from 'src/app/shared/interfaces/products/products-response.interface';
 import { CartItems } from 'src/app/shared/interfaces/cart/cart-items.interface';
@@ -29,7 +28,7 @@ export class ProductCardComponent implements OnInit {
     this.productNew();
   }
 
-  // Funcion para despues de dos días quitar el new
+
   productNew(): boolean {
     if (!this.product?.createdAt) return false;
     const today = new Date();
@@ -44,7 +43,7 @@ export class ProductCardComponent implements OnInit {
 
   onAddToCart() {
     this.loading = true;
-    this.addToCart.emit(this.product);  //emitir del padre 
+    this.addToCart.emit(this.product); 
     this.loading = false;
   }
   
